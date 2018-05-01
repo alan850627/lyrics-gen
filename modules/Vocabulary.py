@@ -13,17 +13,17 @@ class Vocabulary:
     separator = '->'
 
     def generate(self, input_file_path):
-        input_file = codecs.open(input_file_path, 'r', 'utf-8')
-        index = 0
-        for line in input_file:
-            for char in line:
-                if char not in self.vocabulary:
-                    self.vocabulary[char] = index
-                    self.char_lookup[index] = char
+        with io.open(input_file_path,'r',encoding='utf8') as f:
+            text = f.read()
+            tok = [x for x in text.split(' ')]
+            index = 0
+            for word in tok:
+                if word not in self.vocabulary:
+                    self.vocabulary[word] = index
+                    self.char_lookup[word] = word
                     index += 1
-        input_file.close()
-        self.set_vocabulary_size()
-        self.create_binary_representation()
+            self.set_vocabulary_size()
+            self.create_binary_representation()
 
     def retrieve(self, input_file_path):
         with io.open(input_file_path,'r',encoding='utf8') as f:

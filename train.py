@@ -14,8 +14,8 @@ def main():
     parser.add_argument('--model_name', type=str, required=True)
 
     parser.add_argument('--epoch', type=int, default=200)
-    parser.add_argument('--batch_size', type=int, default=50)
-    parser.add_argument('--sequence_length', type=int, default=50)
+    parser.add_argument('--batch_size', type=int, default=20)
+    parser.add_argument('--sequence_length', type=int, default=20)
     parser.add_argument('--log_frequency', type=int, default=100)
     parser.add_argument('--learning_rate', type=int, default=0.002)
     parser.add_argument('--units_number', type=int, default=128)
@@ -71,8 +71,7 @@ def main():
                 acc = sess.run(accuracy, feed_dict={model.x: batch_x, model.y: batch_y})
                 loss = sess.run(cost, feed_dict={model.x: batch_x, model.y: batch_y})
                 print("Iteration {}, batch loss: {:.6f}, training accuracy: {:.5f}".format(iteration * batch_size,
-                                                                                           loss, acc))
-        batch.clean()
+
         print("Optimization done")
 
         saver = tf.train.Saver(tf.global_variables())
