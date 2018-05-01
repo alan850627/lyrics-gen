@@ -71,7 +71,7 @@ def main():
                 acc = sess.run(accuracy, feed_dict={model.x: batch_x, model.y: batch_y})
                 loss = sess.run(cost, feed_dict={model.x: batch_x, model.y: batch_y})
                 print("Iteration {}, batch loss: {:.6f}, training accuracy: {:.5f}".format(iteration * batch_size,
-
+                                                                                           loss, acc))
         print("Optimization done")
 
         saver = tf.train.Saver(tf.global_variables())
