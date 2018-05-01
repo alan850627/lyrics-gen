@@ -20,7 +20,7 @@ def main():
     model_name = args.model_name
     vocabulary_file = args.vocabulary_file
     output_file = args.output_file
-    seed = args.seed.decode('utf-8')
+    seed = args.seed
     sample_length = args.sample_length
     log_frequency = args.log_frequency
 
@@ -66,7 +66,7 @@ def main():
                 sample_file.write(predicted_char)
 
                 if i % log_frequency == 0:
-                    print "Progress: {}%".format((i * 100) / sample_length)
+                    print("Progress: {}%".format((i * 100) / sample_length))
 
             sample_file.close()
             print("Sample saved in {}".format(output_file))
