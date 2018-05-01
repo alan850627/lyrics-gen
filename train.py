@@ -19,7 +19,7 @@ def main():
     parser.add_argument('--log_frequency', type=int, default=100)
     parser.add_argument('--learning_rate', type=int, default=0.002)
     parser.add_argument('--units_number', type=int, default=128)
-    parser.add_argument('--layers_number', type=int, default=2)
+    parser.add_argument('--layers_number', type=int, default=3)
     args = parser.parse_args()
 
     training_file = args.training_file
