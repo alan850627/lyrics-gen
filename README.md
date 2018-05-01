@@ -18,3 +18,4 @@ python train.py --training_file worship_lower.txt --vocabulary_file worship_lowe
 # Sample
 ```Bash
 python sample.py --model_name lstm_regression_model --vocabulary_file worship_lower.vocab --output_file sample.txt
+```
