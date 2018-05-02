@@ -12,7 +12,7 @@ def main():
     parser.add_argument('--vocabulary_file', type=str, required=True)
     parser.add_argument('--output_file', type=str, required=True)
 
-    parser.add_argument('--seed', type=str, default="Once upon a time, ")
+    parser.add_argument('--seed', type=str, default="Amazing grace ")
     parser.add_argument('--sample_length', type=int, default=1500)
     parser.add_argument('--log_frequency', type=int, default=100)
     args = parser.parse_args()
