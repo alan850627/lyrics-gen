@@ -17,3 +17,4 @@ python train.py --training_file worship.txt --vocabulary_file worship.vocab --mo
 # Sample
 ```Bash
 python sample.py --model_name lstm_regression_model --vocabulary_file worship.vocab --output_file sample.txt
+```

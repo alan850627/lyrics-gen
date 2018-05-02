@@ -28,6 +28,8 @@ class Batch:
             self.data_file.seek(0)
             self.dataset_full_passes += 1
             print("Pass {} done".format(self.dataset_full_passes))
+            os.system("python sample.py --model_name lstm_regression_model --vocabulary_file worship.vocab --output_file sample%d.txt" % self.dataset_full_passes)
+
 
         for i in np.arange(0, string_len, self.sequence_length + 1):
             sequence = current_batch[i:i + self.sequence_length]

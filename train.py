@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-__author__ = 'Tony Beltramelli www.tonybeltramelli.com - 19/08/2016'
 
 import os
 import argparse
@@ -72,6 +71,12 @@ def main():
                 loss = sess.run(cost, feed_dict={model.x: batch_x, model.y: batch_y})
                 print("Iteration {}, batch loss: {:.6f}, training accuracy: {:.5f}".format(iteration * batch_size,
                                                                                            loss, acc))
+
+                saver = tf.train.Saver(tf.global_variables())
+                checkpoint_path = "{}/{}.ckpt".format(model_name, model_name)
+                saver.save(sess, checkpoint_path, global_step=iteration * batch_size)
+                print("Model saved in {}".format(model_name))
+
         batch.clean()
         print("Optimization done")
 
