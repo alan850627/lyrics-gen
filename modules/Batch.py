@@ -8,11 +8,13 @@ import os
 class Batch:
     dataset_full_passes = 0
 
-    def __init__(self, data_file_name, vocabulary_file_path, batch_size, sequence_length):
+    def __init__(self, data_file_name, vocabulary_file_path, batch_size, sequence_length, vocab):
         self.data_file = codecs.open(data_file_name, 'r', 'utf_8')
 
         self.vocabulary = Vocabulary()
         self.vocabulary.retrieve(vocabulary_file_path)
+
+        self.vocab = vocab
 
         self.batch_size = batch_size
         self.sequence_length = sequence_length
@@ -29,7 +31,7 @@ class Batch:
             self.data_file.seek(0)
             self.dataset_full_passes += 1
             print("Pass {} done".format(self.dataset_full_passes))
-            os.system("python sample.py --model_name lstm_regression_model --vocabulary_file worship.vocab --output_file samples/sample%d.txt" % self.dataset_full_passes)
+            os.system("python sample.py --model_name lstm_regression_model --vocabulary_file %s --output_file %s-samples/sample%d.txt" % (self.vocab, self.vocab[:self.vocab.index('.')], self.dataset_full_passes))
 
 
         for i in np.arange(0, string_len, self.sequence_length + 1):

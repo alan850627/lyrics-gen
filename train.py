@@ -12,10 +12,10 @@ def main():
     parser.add_argument('--vocabulary_file', type=str, required=True)
     parser.add_argument('--model_name', type=str, required=True)
 
-    parser.add_argument('--epoch', type=int, default=200)
+    parser.add_argument('--epoch', type=int, default=120)
     parser.add_argument('--batch_size', type=int, default=50)
     parser.add_argument('--sequence_length', type=int, default=50)
-    parser.add_argument('--log_frequency', type=int, default=100)
+    parser.add_argument('--log_frequency', type=int, default=200)
     parser.add_argument('--learning_rate', type=int, default=0.002)
     parser.add_argument('--units_number', type=int, default=128)
     parser.add_argument('--layers_number', type=int, default=2)
@@ -31,7 +31,7 @@ def main():
     log_frequency = args.log_frequency
     learning_rate = args.learning_rate
 
-    batch = Batch(training_file, vocabulary_file, batch_size, sequence_length)
+    batch = Batch(training_file, vocabulary_file, batch_size, sequence_length, vocabulary_file)
 
     input_number = batch.vocabulary.size
     classes_number = batch.vocabulary.size
@@ -69,7 +69,8 @@ def main():
             if iteration % log_frequency == 0:
                 acc = sess.run(accuracy, feed_dict={model.x: batch_x, model.y: batch_y})
                 loss = sess.run(cost, feed_dict={model.x: batch_x, model.y: batch_y})
-                print("Iteration {}, batch loss: {:.6f}, training accuracy: {:.5f}".format(iteration * batch_size,
+                with open('%s.log' % training_file[:training_file.index('.')], 'a') as logfile:
+                    logfile.write("Iteration {}, batch loss: {:.6f}, training accuracy: {:.5f}\n".format(iteration * batch_size,
                                                                                            loss, acc))
 
                 saver = tf.train.Saver(tf.global_variables())
