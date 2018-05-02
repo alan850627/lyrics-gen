@@ -4,17 +4,19 @@ import os
 import io
 import argparse
 import string
-import pandas as pd
 import math
 from random import randint
 
-def get_word(df):
-    rand = randint(1, len(df.word))
-    for index, row in df.iterrows():
-        if (rand <= row['frequency']):
-            return row['word']
+def get_word(wf):
+    count = 0
+    for key in wf:
+        count += wf[key]
+    rand = randint(1, count)
+    for key in wf:
+        if (rand <= wf[key]):
+            return key
         else:
-            rand -= row['frequency']
+            rand -= wf[key]
 
 def main():
     parser = argparse.ArgumentParser()
@@ -27,38 +29,20 @@ def main():
         text = f.read().lower().split(' ')
 
     # Count the words
-    totalwords = 0
-    wordfreq = []
-    words = []
-    for word in text:
-        if word not in words:
-            count = text.count(word)
-            wordfreq.append([word, count])
-            words.append(word)
-            totalwords += count
-
-    # Make into pandas dataframe
-    df = pd.DataFrame(wordfreq, columns=['word','frequency'])
-
-    # Find the top 10 words
-    print("Top 10 most common words from all the papers:")
-    print(df.nlargest(10, 'frequency')['word'].tolist())
-    print 
-
-    # Calculate entropy
-    SUM = 0
-    for index, row in df.iterrows():
-        pi = float(row['frequency'])/float(totalwords)
-        SUM += pi * math.log(pi, 2)
-    entropy = -SUM
-    print("Entropy of words: %f bits" % entropy)
-
+    wordfreq = {}
+    for i in range(0, len(text)):
+        word = text[i]
+        if word not in wordfreq:
+            wordfreq[word] = 1
+        else:
+            wordfreq[word] += 1
 
     sentence = ""
+    word = "bless"
     for i in range(0,200):
-        sentence += get_word(df) + " ";
+        sentence += word + " ";
+        word = get_word(wordfreq)
 
-    print("Here is our generated paragraph:")
     print(sentence)
 
 if __name__ == "__main__":

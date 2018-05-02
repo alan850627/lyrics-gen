@@ -8,7 +8,10 @@ import math
 from random import randint
 
 def get_word(wf):
-    rand = randint(1, len(wf))
+    count = 0
+    for key in wf:
+        count += wf[key]
+    rand = randint(1, count)
     for key in wf:
         if (rand <= wf[key]):
             return key
