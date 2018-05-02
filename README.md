@@ -19,3 +19,8 @@ python train.py --training_file worship_lower.txt --vocabulary_file worship_lowe
 ```Bash
 python sample.py --model_name lstm_regression_model --vocabulary_file worship_lower.vocab --output_file sample.txt
 ```
+
+# Markov
+```
+python markov.py --training_file worship_lower.txt
+```
