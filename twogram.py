@@ -41,12 +41,11 @@ def main():
             wordfreq[word1][word2] += 1
 
     sentence = ""
-    word = "bless"
+    word = list(wordfreq.keys())[0]
     for i in range(0,200):
         sentence += word + " ";
         word = get_word(wordfreq[word])
 
-    print("Here is our generated paragraph:")
     print(sentence)
 
 if __name__ == "__main__":

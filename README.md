@@ -22,5 +22,5 @@ python sample.py --model_name lstm_regression_model --vocabulary_file worship_lo
 
 # Markov
 ```
-python markov.py --training_file worship_lower.txt
+python onegram.py --training_file scraped/worship.txt
 ```

@@ -43,16 +43,16 @@ def main():
         else:
             wordfreq[word1][word2][word3] += 1
 
-    sentence = "bless the "
-    word1 = sentence.split()[0]
-    word2 = sentence.split()[1]
+    
+    word1 = list(wordfreq.keys())[0]
+    word2 = list(wordfreq[word1].keys())[0]
+    sentence = "%s %s " % (word1, word2)
     for i in range(0,200):
         word3 = get_word(wordfreq[word1][word2])
         sentence += word3 + " ";
         word1 = word2
         word2 = word3
 
-    print("Here is our generated paragraph:")
     print(sentence)
 
 if __name__ == "__main__":

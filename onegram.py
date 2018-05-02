@@ -38,7 +38,6 @@ def main():
             wordfreq[word] += 1
 
     sentence = ""
-    word = "bless"
     for i in range(0,200):
         sentence += word + " ";
         word = get_word(wordfreq)
