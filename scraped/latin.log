@@ -1,0 +1,13 @@
+Iteration 10000, batch loss: 0.011708, training accuracy: 0.18000
+Iteration 20000, batch loss: 0.011175, training accuracy: 0.20000
+Iteration 30000, batch loss: 0.011261, training accuracy: 0.14000
+Iteration 40000, batch loss: 0.011174, training accuracy: 0.18000
+Iteration 50000, batch loss: 0.011161, training accuracy: 0.12000
+Iteration 60000, batch loss: 0.010372, training accuracy: 0.28000
+Iteration 70000, batch loss: 0.010946, training accuracy: 0.28000
+Iteration 80000, batch loss: 0.010913, training accuracy: 0.20000
+Iteration 90000, batch loss: 0.010360, training accuracy: 0.30000
+Iteration 100000, batch loss: 0.010302, training accuracy: 0.36000
+Iteration 110000, batch loss: 0.009745, training accuracy: 0.30000
+Iteration 120000, batch loss: 0.010504, training accuracy: 0.38000
+Iteration 130000, batch loss: 0.009880, training accuracy: 0.38000
